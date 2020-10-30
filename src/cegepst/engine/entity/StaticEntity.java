@@ -1,6 +1,9 @@
 package cegepst.engine.entity;
 
 import cegepst.engine.Buffer;
+import org.w3c.dom.css.Rect;
+
+import java.awt.*;
 
 public abstract class StaticEntity {
 
@@ -35,5 +38,13 @@ public abstract class StaticEntity {
 
     public int getHeight() {
         return height;
+    }
+
+    public boolean intersectWith(StaticEntity other) {
+        return getBounds().intersects(other.getBounds());
+    }
+
+    protected Rectangle getBounds() {
+        return new Rectangle(x, y, width, height);
     }
 }
